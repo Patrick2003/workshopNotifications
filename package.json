@@ -1,0 +1,24 @@
+{
+  "name": "workshopnotifications",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Patrick2003/workshopNotifications.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Patrick2003/workshopNotifications/issues"
+  },
+  "homepage": "https://github.com/Patrick2003/workshopNotifications#readme",
+  "dependencies": {
+    "es6-promise": "^4.2.6",
+    "isomorphic-fetch": "^2.2.1",
+    "telegraf": "^3.29.0"
+  }
+}
