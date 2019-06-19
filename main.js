@@ -11,7 +11,8 @@ require('isomorphic-fetch');
 const bot = new Telegraf(config.botToken);
 
 bot.command('overview', (ctx) => ctx.reply(messages.overview(workshops.data)));
-bot.command('info', (ctx) => ctx.reply(messages.dates(workshops.data), messages.createKeyboard(workshops.data).extra()));
+bot.command('info', (ctx) => ctx.reply(messages.answerInfo(workshops.data), messages.createKeyboard(workshops.data, 'info').extra()));
+bot.command('dates', (ctx) => ctx.reply(messages.answerDates(workshops.data), messages.createKeyboard(workshops.data, 'dates').extra()));
 bot.launch();
 
 
@@ -19,6 +20,9 @@ bot.action(/info_(.*)/, (ctx) => {
   ctx.reply(messages.createInfo(ctx.match[1], workshops.data), { parse_mode: 'HTML' });
 });
 
+bot.action(/dates_(.*)/, (ctx) => {
+  ctx.reply(messages.createDates(ctx.match[1], workshops.data), { parse_mode: 'HTML' });
+});
 
 let requestedData = {};
 
@@ -42,4 +46,4 @@ setInterval(() => {
       }
     });
   }
-}, 5000);
+}, config.fetchTimeout);
